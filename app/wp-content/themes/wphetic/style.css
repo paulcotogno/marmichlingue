@@ -1,3 +1,10 @@
+/*
+Theme Name: WP Hetic
+Author: Adrien BOUTEILLER
+Description: Notre thème WordPress
+Version : 1.0.0
+ */
+
 body
 {
     text-align: left;
@@ -15,6 +22,6 @@ body
 .title
 {
     font-size: 11pt;
-    font-family: verdana;
+    font-family: 'verdana', sans-serif;
     font-weight: bold;
 }

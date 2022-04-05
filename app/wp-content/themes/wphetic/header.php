@@ -1,12 +1,9 @@
-<html>
+<html lang="en">
 <head>
-    <title>Tutorial theme</title>
+    <title>Indestructible uncanny</title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
-
 <body>
-<div id="ttr_header" class="header">
+<header id="wp_header" class="header">
     <h1>HEADER</h1>
-</div>
-
-<div class="container">
+</header>
