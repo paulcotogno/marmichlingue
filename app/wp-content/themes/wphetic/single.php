@@ -18,6 +18,8 @@
     </div>
     <img class="post_img" src="<?php the_post_thumbnail_url()?>" alt="">
     <div class="post_content">
+
+        <?php echo do_shortcode("[infos-recette time=".get_post_meta($post->ID, 'wphetic_time', true)." difficulty=".get_post_meta($post->ID, 'wphetic_difficulty', true)." price=".get_post_meta($post->ID, 'wphetic_price', true)." ]"); ?>
         <span class="post_price_category"><?php the_category() ?></span>
         <p class="post_description"><?php the_content(__('(more...)')); ?></p>
         <div class="post_comments">

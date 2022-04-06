@@ -86,13 +86,15 @@ function add_cpt_recipe()
         'has_archive' => true,
         "show_in_menu" => true,
         'publicly_queryable' => true,
+        'thumbnail' => true,
         'rewrite' => ['slug' => 'recette'],
         'taxonomies' => ['category'],
         'capabilities' => [
             'edit_post' => "edit_recipe",
             'edit_posts' => "edit_recipe",
             'read_post' => "edit_recipe",
-            "delete_post" => "edit_recipe",
+            "delete_post" => "manage_recipe",
+            'moderate_comments' => "manage_recipe",
             "publish_posts" => "manage_recipe",
             "read_private_posts" => "manage_recipe",
         ],
@@ -153,6 +155,17 @@ add_action('switch_theme', function () {
     $admin->remove_cap('manage_recipe');
     remove_role('edit_recipe');
 });
+class Wphetic_AddEvent {
+
+    private $styles;
+
+    public function __construct(){
+        $this->styles = get_terms([
+            'taxonomy' => 'category',
+            'hide_empty' => false
+        ]);
+    }
+}
 
 /**
  * formulaire d'upload d'image
@@ -190,22 +203,71 @@ function wphetic_add_metabox()
         'recipe',
         'side'
     );
+
+    add_meta_box(
+        'time',
+        'Durée de la préparation',
+        'wphetic_metabox_renderer',
+        'recipe',
+        'side'
+    );
+
+    add_meta_box(
+        'difficulty',
+        'Difficulté de la recette',
+        'wphetic_metabox_rendered',
+        'recipe',
+        'side'
+    );
 }
+
+
 
 add_action('add_meta_boxes', 'wphetic_add_metabox');
 
 function wphetic_metabox_render()
 {
-    $checked = get_post_meta($_GET['post'], 'wphetic_price', true);
+    $price = get_post_meta($_GET['post'], 'wphetic_price', true);
+
     ?>
-    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $checked; ?>" name="price" id="price">
+    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $price; ?>" name="price" id="price">
     <?php
+
 }
+function wphetic_metabox_rendered()
+{
+
+    $difficulty = get_post_meta($_GET['post'], 'wphetic_difficulty', true);
+    ?>
+    <label for="difficulty">Entrer la difficultée de la recette</label><input type="number" value="<?= $difficulty; ?>" name="difficulty" id="difficulty">
+    <?php
+
+}
+function wphetic_metabox_renderer()
+{
+
+    $time = get_post_meta($_GET['post'], 'wphetic_time', true);
+    ?>
+    <label for="time">Entrer la durée de préparations de la recette</label><input type="number" value="<?= $time; ?>" name="time" id="time">
+    <?php
+
+}
+
+
+
 
 function wphetic_save_metabox($post_id)
 {
     if (isset($_POST['price']) && !empty($_POST['price'])) {
         update_post_meta($post_id, 'wphetic_price', $_POST['price']);
+    }
+
+    if (isset($_POST['time']) && !empty($_POST['time'])) {
+        update_post_meta($post_id, 'wphetic_time', $_POST['time']);
+    }
+
+    if (isset($_POST['difficulty']) && !empty($_POST['difficulty'])) {
+        update_post_meta($post_id, 'wphetic_difficulty', $_POST['difficulty']);
     }
 }
 
