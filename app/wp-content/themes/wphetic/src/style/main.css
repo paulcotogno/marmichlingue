@@ -1,49 +1,11 @@
-/*
-Theme Name: WP Hetic
-Author: Adrien BOUTEILLER
-Description: Notre thème WordPress
-Version : 1.0.0
- */
 @import 'template/post.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body
-{
-    text-align: left;
-}
-#ttr_sidebar
-{
-    border-left: 1px solid black;
-}
-#ttr_footer
-{
-    width: 100%;
-    border-top: 1px #a2a2a2 solid;
-    text-align: center;
-}
-.title
-{
-    font-size: 11pt;
-    font-family: 'verdana', sans-serif;
-    font-weight: bold;
-}
-.wp_banner {
-    width: 100vw;
-    position: relative;
-}
-.wp_banner > h1 {
-    font-size: 80px;
-    color: red;
-    text-align: center;
-    width: 100%;
-    -webkit-text-stroke-color: white;
-    -webkit-text-stroke-width: 2px ;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    top: 50%;
 
+h1 {
+  color: red;
 }
