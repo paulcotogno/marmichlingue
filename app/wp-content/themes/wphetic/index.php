@@ -1,9 +1,14 @@
+<?php
+
+$args      = array('post_type' => 'recipe', 'posts_per_page' => 3);
+$the_query = new WP_Query($args);
+?>
 <?php get_header(); ?>
 <div id="wp_container">
     <main id="wp_main" class="row">
         <div id="wp_content">
             <div class="row">
-                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
                     <div>
                         <a href="<?php the_permalink(); ?>">Voir plus</a>
                         <h1><?php the_title(); ?></h1>
