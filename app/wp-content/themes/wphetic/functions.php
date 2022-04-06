@@ -5,12 +5,13 @@ function prefix_disable_gutenberg($current_status, $post_type)
 {
 }
 
+
 function add_styles_and_scripts() {
+    wp_enqueue_style('dashicons');
     wp_enqueue_style( 'main', get_template_directory_uri() .'/src/style/main.css' );
     wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' );
     wp_enqueue_style( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' );
 }
-
 add_action( 'wp_enqueue_scripts', 'add_styles_and_scripts' );
 
 function add_cpt_recipe() {
