@@ -1,0 +1,26 @@
+.form {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 4% 0;
+    width: 40%;
+
+    @media screen and (max-width: 1024px) {
+        width: 90%;
+    }
+
+    &__item {
+        margin-bottom: 24px;
+
+        .input {
+            padding: 8px;
+            width: 100%;
+        }
+    }
+
+    button {
+        padding: 12px;
+        background-color: white;
+        border: 1px solid black;
+    }
+}

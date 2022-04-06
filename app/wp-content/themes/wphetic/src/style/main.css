@@ -4,6 +4,32 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.form {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin: 4% 0;
+  width: 40%;
+}
+@media screen and (max-width: 1024px) {
+  .form {
+    width: 90%;
+  }
+}
+.form__item {
+  margin-bottom: 24px;
+}
+.form__item .input {
+  padding: 8px;
+  width: 100%;
+}
+.form button {
+  padding: 12px;
+  background-color: white;
+  border: 1px solid black;
+}
+
 header .menu-top, footer .menu-top {
   display: -webkit-box;
   display: -ms-flexbox;

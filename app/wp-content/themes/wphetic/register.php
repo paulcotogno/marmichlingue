@@ -23,22 +23,23 @@ if($_POST){
 ?>
 
 
-<form action="" method="post">
+<form class="form" action="" method="post">
 
-    <div class="mb-3">
+    <div class="form__item">
         <label for="InputEmail" class="form-label">Email adress</label>
-        <input type="text" class="form-control" id="InputEmail1" name="email">
+        <input class="input" type="text" class="form-control" id="InputEmail1" name="email">
     </div>
-    <div class="mb-3">
+    <div class="form__item">
         <label for="InputLogin" class="form-label">Login</label>
-        <input type="text" class="form-control" id="InputLogin1" name="login">
+        <input class="input" type="text" class="form-control" id="InputLogin1" name="login">
     </div>
-    <div class="mb-3">
+    <div class="form__item">
         <label for="InputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="InputPassword1" name="password">
+        <input class="input" type="password" class="form-control" id="InputPassword1" name="password">
     </div>
-    <button type="submit" class="btn btn-primary" name="wp-submit">Button</button>
+    <button type="submit"  name="wp-submit">S'inscrire</button>
     <input type="hidden" name="redirect_to" value="http://localhost:2345/">
 
 </form>
+
 <?php get_footer(); ?>
