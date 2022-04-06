@@ -3,21 +3,22 @@
     <?php if (have_comments()) : ?>
     <div class="comments__meta">
         <h2 class="comments__title">
-            Commentaire(s)
+            Commentaires
         </h2>
-        <span class="dashicons dashicons-admin-comments"><?php echo get_comments_number(); ?> </span>
+        <span class="dashicons dashicons-admin-comments"><?= get_comments_number() == 1 ? get_comments_number() . ' commentaire' : get_comments_number() . ' commentaires'  ?> </span>
         <span class="dashicons dashicons-admin-comments"></span>
     </div>
-        <ol class="comment__list">
+        <ul class="comment__list">
             <?php
             // La fonction qui liste les commentaires
             wp_list_comments([
-                'style' => 'ol',
+                'style' => 'div',
                 'short_ping' => true,
-                'avatar_size' => 50,
+                'reverse_top_level' => true,
+                'callback' => 'better_comments'
             ]);
             ?>
-        </ol>
+        </ul>
     <?php
     // S'il n'y a pas de commentaires
     else :
