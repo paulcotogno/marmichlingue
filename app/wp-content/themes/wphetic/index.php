@@ -5,6 +5,7 @@
             <div class="row">
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <div>
+                        <a href="<?php the_permalink(); ?>">Voir plus</a>
                         <h1><?php the_title(); ?></h1>
                         <h4>Posté sur <?php the_time('F jS, Y') ?></h4>
                         <p><?php the_content(__('(more...)')); ?></p>
