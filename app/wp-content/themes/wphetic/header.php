@@ -11,6 +11,8 @@
 
 </head>
 <body>
+
+
 <header id="wp_header" class="header">
     <!-- <h1>HEADER</h1> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,10 +36,7 @@
                         <a class="nav-link" href="#">Mon compte</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Rechercher</button>
-                </form>
+                <?php get_search_form() ?>
             </div>
         </div>
     </nav>
