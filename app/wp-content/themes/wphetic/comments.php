@@ -1,3 +1,4 @@
+
 <div id="comments" class="comments">
     <?php if (have_comments()) : ?>
     <div class="comments__meta">
@@ -25,6 +26,5 @@
             Il n'y a pas de commentaires pour le moment. Soyez le premier à participer !
         </p>
     <?php endif; ?>
-
     <?php comment_form(); // Le formulaire d'ajout de commentaire ?>
 </div>

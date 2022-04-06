@@ -1,3 +1,8 @@
+<?php
+
+$args      = array('post_type' => 'recipe', 'posts_per_page' => 3);
+$the_query = new WP_Query($args);
+?>
 <?php get_header(); ?>
 <div id="wp_container">
     <main id="wp_main" class="row">
@@ -5,7 +10,7 @@
             <div class="cards">
                 <p class="cards-title">Les 3 dernières recettes</p>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
-                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
                     <div class="col">
                         <div class="card">
                             <img src="https://picsum.photos/200" class="card-img-top" alt="https://picsum.photos/200">
