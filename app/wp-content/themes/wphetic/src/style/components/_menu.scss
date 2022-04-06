@@ -1,5 +1,47 @@
-header {
-    .brand-name {
-        color: rgb(255, 136, 0);
+header, footer {
+    .menu {
+        &-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            background-color: rgb(32, 32, 32);
+
+            &__title {
+                color: white;
+                font-size: 22px;
+            }
+
+            &__search {
+                form {
+                    margin: 0;
+
+                    input, button {
+                        padding: 8px;
+                    }
+                }
+            }
+        }
+
+        &-bot {
+            background-color: rgb(243, 243, 243);
+            padding: 8px;
+
+            &__list {
+                display: flex;
+                justify-content: center;
+                list-style-type: none;
+                margin: 0;
+
+                li {
+                    margin: 0 12px;
+                    color: black !important;
+                }
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
     }
 }
