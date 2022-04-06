@@ -118,6 +118,19 @@ add_action('switch_theme', function () {
  */
 
 add_action('admin_post_upload_demo', function () {
+
+$recipe   = wp_insert_post( [
+    "post_content" => $_POST["recipe_content"],
+    "post_title"   => $_POST["recipe_title"],
+    "post_type"    => "recipe",
+    "post_status"  => "pending",
+    "post_author"  => get_current_user_id()
+] );
+
+
+
+
+
     if (wp_verify_nonce( $_POST['my_image_upload_nonce'], 'my_image_upload')){
 
         $attachment_id = media_handle_upload('my_image_upload', 0);
@@ -125,7 +138,7 @@ add_action('admin_post_upload_demo', function () {
         if (is_wp_error($attachment_id)){
             wp_redirect($_POST['_wp_http_referer'] . '?status=error');
         }else{
-            set_post_thumbnail( $_POST['post_id'], $attachment_id);
+            set_post_thumbnail( $attachment_id, $recipe);
             wp_redirect( $_POST['_wp_http_referer'] . '?status=no_nonce');
         }
     }else{
