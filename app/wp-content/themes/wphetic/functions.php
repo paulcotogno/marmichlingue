@@ -5,19 +5,46 @@ function prefix_disable_gutenberg($current_status, $post_type)
 {
 }
 
-
-function add_styles_and_scripts() {
+function add_styles_and_scripts()
+{
     wp_enqueue_style('dashicons');
-    wp_enqueue_style( 'main', get_template_directory_uri() .'/src/style/main.css' );
-    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' );
-    wp_enqueue_style( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' );
+    wp_enqueue_style('main', get_template_directory_uri() . '/src/style/main.css');
+    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js');
 }
-add_action( 'wp_enqueue_scripts', 'add_styles_and_scripts' );
 
-function add_cpt_recipe() {
+add_action('wp_enqueue_scripts', 'add_styles_and_scripts');
 
+function customize_comment_text($fields)
+{
+    $fields['label_submit'] = 'Partager';
+    $fields['title_reply'] = 'Partagez votre expérience !';
+    $fields['logged_in_as'] = '<p class="logged-in-as">Ajoutez un commentaire ci-dessous :</p>';
+
+    return $fields;
+}
+
+add_filter('comment_form_defaults', 'customize_comment_text');
+
+function customize_comment_fields($fields)
+{
+    unset($fields['comment']);
+
+    $fields['comment'] = '
+        <div class="form-group col-md-12 col-xs-12 d-flex flex-column">
+            <label class="form-label m-3">Commentaire</label>
+            <textarea class="form-control m-3" placeholder="Votre commentaire..." ></textarea>
+        </div>';
+
+    return $fields;
+}
+
+add_filter('comment_form_fields', 'customize_comment_fields');
+
+function add_cpt_recipe()
+{
     // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
-    $labels = array(
+    $labels = [
         // Le nom au pluriel
         'name' => _x('Recette', 'Post Type General Name'),
         // Le nom au singulier
@@ -34,15 +61,15 @@ function add_cpt_recipe() {
         'search_items' => __('Rechercher une recette'),
         'not_found' => __('Non trouvée'),
         'not_found_in_trash' => __('Non trouvée dans la corbeille'),
-    );
+    ];
 
     // On peut définir ici d'autres options pour notre custom post type
-    $args = array(
+    $args = [
         'label' => __('Recette'),
         'description' => __('Tous sur Recette'),
         'labels' => $labels,
         // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-        'supports' => array(
+        'supports' => [
             'title',
             'editor',
             'excerpt',
@@ -51,7 +78,7 @@ function add_cpt_recipe() {
             'comments',
             'revisions',
             'custom-fields',
-        ),
+        ],
         /*
         * Différentes options supplémentaires
         */
@@ -61,7 +88,7 @@ function add_cpt_recipe() {
         'has_archive' => true,
         "show_in_menu" => true,
         'publicly_queryable' => true,
-        'rewrite' => array('slug' => 'recette'),
+        'rewrite' => ['slug' => 'recette'],
         'taxonomies' => ['style'],
         'capabilities' => [
             'edit_post' => "edit_recipe",
@@ -70,26 +97,24 @@ function add_cpt_recipe() {
             "delete_post" => "edit_recipe",
             "publish_posts" => "manage_recipe",
             "read_private_posts" => "manage_recipe",
-        ]
+        ],
 
-    );
+    ];
 
     // On enregistre notre custom post type qu'on nomme ici "serietv" et ses arguments
     register_post_type('recipe', $args);
-
 }
 
 add_action('init', 'add_cpt_recipe', 0);
 
-
 $custom_post_type = [
-    'capabilities' => array(
+    'capabilities' => [
         'edit_posts' => "edit_recipe",
         'read_post' => "edit_recipe",
         "delete_post" => "edit_recipe",
         "publish_posts" => "manage_recipe",
         "read_private_posts" => "manage_recipe",
-    )
+    ],
 ];
 
 register_post_type('posts', $custom_post_type);
@@ -115,13 +140,13 @@ add_action('after_switch_theme', function () {
     add_role('recipe_edit', 'Edit Recipe', [
         'read' => true,
         'edit_recipe' => true,
-        'manage_recipe' => false
+        'manage_recipe' => false,
     ]);
 
     add_role('moderator', 'moderator', [
         'read' => true,
         'edit_recipe' => true,
-        'manage_recipe' => true
+        'manage_recipe' => true,
     ]);
 });
 
@@ -136,18 +161,15 @@ add_action('switch_theme', function () {
  */
 
 add_action('admin_post_upload_demo', function () {
-
     $recipe = wp_insert_post([
         "post_content" => $_POST["recipe_content"],
         "post_title" => $_POST["recipe_title"],
         "post_type" => "recipe",
         "post_status" => "pending",
-        "post_author" => get_current_user_id()
+        "post_author" => get_current_user_id(),
     ]);
 
-
     if (wp_verify_nonce($_POST['my_image_upload_nonce'], 'my_image_upload')) {
-
         $attachment_id = media_handle_upload('my_image_upload', 0);
 
         if (is_wp_error($attachment_id)) {
@@ -176,12 +198,9 @@ add_action('add_meta_boxes', 'wphetic_add_metabox');
 
 function wphetic_metabox_render()
 {
-
     $checked = get_post_meta($_GET['post'], 'wphetic_price', true);
     ?>
-    <label for="price">Entrer le prix de votre recette</label>
-    <input type="number" value="<?= $checked; ?>" name="price" id="price">
-
+    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $checked; ?>" name="price" id="price">
     <?php
 }
 
