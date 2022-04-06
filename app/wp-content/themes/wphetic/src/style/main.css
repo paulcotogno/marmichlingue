@@ -1,5 +1,5 @@
-h1 {
-  color: red;
+header .brand-name {
+  color: #ff8800;
 }
 
 .post_container {
@@ -9,12 +9,18 @@ h1 {
 }
 
 .post_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .post_info > * {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .post_info > .post_date {
@@ -22,8 +28,13 @@ h1 {
 }
 
 .post_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .post_content > .post_price_category {
@@ -37,14 +48,25 @@ h1 {
 
 /* COMMENTS */
 .post_container .post_comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .post_container .post_comment > .comment-meta {
-  flex: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .post_container .post_comment > .comment-meta > .comment_date {
@@ -52,7 +74,41 @@ h1 {
 }
 
 .post_container .post_comment > .comment_content {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
-/*# sourceMappingURL=main.css.map */
+.cards {
+  padding: 4% 15% !important;
+}
+.cards-title {
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 2rem;
+}
+.cards .card {
+  border: none !important;
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.cards .card-title {
+  color: #ff8800;
+}
+.cards .card img {
+  width: 100% !important;
+  height: 300px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cards .card-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1rem;
+  color: black !important;
+  font-size: 16px !important;
+}

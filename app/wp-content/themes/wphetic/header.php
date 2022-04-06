@@ -12,33 +12,36 @@
 </head>
 <body>
 <header id="wp_header" class="header">
-    <!-- <h1>HEADER</h1> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="#">
-                <img src="<?php echo get_template_directory_uri(); ?>/dist/img/logo.png" alt="" class="logo">
-            </a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Recettes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mon compte</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Rechercher</button>
-                </form>
+    <section class="ftco-section">
+		<div class="container-fluid px-md-5">
+			<div class="row justify-content-between pt-3">
+				<div class="col-md-12 order-md-last">
+					<div class="row">
+						<div class="col-md-6">
+							<a class="navbar-brand brand-name font-weight-bold" href="#">Marmichlingue</a>
+						</div>
+						<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+							<form action="#" class="searchform order-lg-last">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control pl-3" placeholder="Tarte aux framboises...">
+                                    <button type="submit" placeholder="" class="form-control search">Rechercher</button>
+                                </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Recettes</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Mon compte</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+	</section>
 </header>

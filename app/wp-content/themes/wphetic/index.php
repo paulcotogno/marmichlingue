@@ -2,20 +2,31 @@
 <div id="wp_container">
     <main id="wp_main" class="row">
         <div id="wp_content">
-            <div class="row">
-                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <div>
-                        <a href="<?php the_permalink(); ?>">Voir plus</a>
-                        <h1><?php the_title(); ?></h1>
-                        <h4>Posté sur <?php the_time('F jS, Y') ?></h4>
-                        <p><?php the_content(__('(more...)')); ?></p>
+            <div class="cards">
+                <p class="cards-title">Les 3 dernières recettes</p>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <div class="col">
+                        <div class="card">
+                            <img src="https://picsum.photos/200" class="card-img-top" alt="https://picsum.photos/200">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php the_title(); ?></h5>
+                                <div class="card-content">
+                                    <a href="<?php the_permalink(); ?>">Voir plus</a>
+                                    <p>Posté le <?php the_time('F jS, Y') ?></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                <?php endwhile; else : ?>
+                    <?php endwhile; else : ?>
                     <p><?php _e('Désolé, aucun article ne correspond à vos critères.'); ?></p>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <?php get_sidebar(); ?>
+
+        
     </main>
 </div>
 <?php get_footer(); ?>
