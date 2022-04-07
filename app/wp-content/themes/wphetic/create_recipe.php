@@ -23,6 +23,14 @@
         <label for="InputPrice" class="form-label">Prix estimé</label>
         <input type="number" class="form-control" id="InputPrice" name="price">
     </div>
+    <div class="mb-3">
+        <label for="Inputdifficulty" class="form-label">Difficulty (1 : facile; 2 : intermédiaire; 3 : Avancer)</label>
+        <input type="number" class="form-control" id="Inputdifficulty" name="difficulty">
+    </div>
+    <div class="mb-3">
+        <label for="Inputtime" class="form-label">Time</label>
+        <input type="number" class="form-control" id="Inputtime" name="time">
+    </div>
 
     <div class="mb-3">
         <input type="file" name="my_image_upload" id="my_image_upload" multiple="false"/>
