@@ -1,23 +1,23 @@
 <?php
 /*
-Template Name: Search Page
-*/
+ * Template Name: Page recette
+ * Template Post Type : page
+ *
+ */
+?>
 
-global $wp_query;
-$wp_query->set('post_type', 'recipe');
+<?php
 
+$args      = array('post_type' => 'recipe', 'posts_per_page' => -1);
+$the_query = new WP_Query($args);
 ?>
 <?php get_header(); ?>
 <div id="wp_container">
     <main id="wp_main" class="row">
         <div id="wp_content">
             <div class="cards">
-                <div class="cards-buttons">
-                    <button type="button" class="footer__btn"><a href="http://localhost:2345/recettes">Voir toutes les recettes</a></button>
-                    <button type="button" class="footer__btn"><a href="http://localhost:2345/create-recipe">Ajouter une recette</a></button>
-                </div>
                 <div class="cards-gallery">
-                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
                         <div class="card">
                             <img class="post_img" src="<?php the_post_thumbnail_url()?>" alt="">
                             <div class="card-body">
@@ -39,4 +39,3 @@ $wp_query->set('post_type', 'recipe');
     </main>
 </div>
 <?php get_footer(); ?>
-

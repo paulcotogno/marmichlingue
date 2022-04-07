@@ -1,22 +1,36 @@
 .post_container {
+    margin: 10px 0;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
+    max-width: 60%;
+    box-shadow: 0px 0px 3px rgba($color: #000000, $alpha: 0.2);
     padding: 3rem;
     border-radius: 20px;
+    .post_title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .post_img{
+        min-width: 100%;
+    }
 }
-.post_info{
+
+h2.post_headline,
+h2.comments__title {
+    color: rgb(255, 111, 97);
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.post_info {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.post_info > * {
-    flex: 1;
-}
-.post_info > .post_date {
-    margin-left: auto;
-}
-.post_content{
+
+.post_content {
     display: flex;
     flex-direction: column;
 }
@@ -46,7 +60,43 @@
     margin-left: auto;
 }
 
-.post_container .post_comment > .comment_content{
+.post_container .post_comment > .comment_content {
     flex: 1;
 }
+.img-thumbnail {
+    display: inline-block;
+}
 
+.comment-arrow{
+    margin: 0 0 0 20px;
+}
+
+.comment-block {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.infos-author{
+    margin-bottom: 15px;
+}
+
+.comment-by {
+    justify-content: space-between;
+}
+
+.comment {
+    list-style-type: none;
+}
+
+.comment > .comment {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    box-shadow: 0px 0px 4px rgba(#000000, 0.3);
+    margin: 30px 0 0 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
