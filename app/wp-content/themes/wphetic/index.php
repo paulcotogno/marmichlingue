@@ -32,8 +32,6 @@ $the_query = new WP_Query($args);
             </div>
         </div>
         <?php get_sidebar(); ?>
-
-        
     </main>
 </div>
 <?php get_footer(); ?>
