@@ -12,7 +12,7 @@ $the_query = new WP_Query($args);
                 <div class="cards-gallery">
                     <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
                     <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="https://picsum.photos/200">
+                        <img src="<?php the_post_thumbnail_url()?>" class="card-img-top" alt="https://picsum.photos/200">
                         <div class="card-body">
                             <p class="card-title"><?php the_title(); ?></p>
                             <div class="card-content">

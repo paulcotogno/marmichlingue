@@ -47,11 +47,25 @@ header .menu-top__title, footer .menu-top__title {
   color: white;
   font-size: 22px;
 }
+header .menu-top__search, footer .menu-top__search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 header .menu-top__search form, footer .menu-top__search form {
   margin: 0;
 }
 header .menu-top__search form input, header .menu-top__search form button, footer .menu-top__search form input, footer .menu-top__search form button {
   padding: 8px;
+}
+header .menu-top__search .button, footer .menu-top__search .button {
+  padding: 8px;
+  margin-left: 12px;
+  background-color: #202020;
+  border: 2px solid white;
+}
+header .menu-top__search .button a, footer .menu-top__search .button a {
+  color: white;
 }
 header .menu-bot, footer .menu-bot {
   background-color: #f3f3f3;

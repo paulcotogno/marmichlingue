@@ -13,11 +13,24 @@ header, footer {
             }
 
             &__search {
+                display: flex;
+
                 form {
                     margin: 0;
 
                     input, button {
                         padding: 8px;
+                    }
+                }
+
+                .button {
+                    padding: 8px;
+                    margin-left: 12px;
+                    background-color: rgb(32, 32, 32);
+                    border: 2px solid white;
+
+                    a {
+                        color: white;
                     }
                 }
             }
