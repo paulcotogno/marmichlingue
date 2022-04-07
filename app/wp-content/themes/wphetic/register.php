@@ -24,7 +24,6 @@ if($_POST){
 
 
 <form class="form" action="" method="post">
-
     <div class="form__item">
         <label for="InputEmail" class="form-label">Email adress</label>
         <input class="input" type="text" class="form-control" id="InputEmail1" name="email">
