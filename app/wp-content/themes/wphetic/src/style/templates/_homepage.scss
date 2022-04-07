@@ -9,7 +9,8 @@
 
     &-gallery {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        flex-wrap: wrap;
 
         @media screen and (max-width: 1024px) {
             flex-direction: column;
@@ -19,6 +20,7 @@
             width: 30%;
             border: none !important;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            margin:0 25px 25px 0;
 
             @media screen and (max-width: 1024px) {
                 width: 100%;

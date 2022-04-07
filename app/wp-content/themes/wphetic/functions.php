@@ -34,9 +34,8 @@ function customize_comment_fields($fields)
     // Display the fields to your own taste.
     // The order in which you place them will determine in what order they are displayed.
     $fields['comment'] = '
-        <div class="form-group col-md-12 col-xs-12 d-flex flex-column">
-            <label class="form-label m-3">Commentaire</label>
-            <textarea class="form-control m-3" placeholder="Votre commentaire..." ></textarea>
+        <div class="form-group">
+            <textarea class="form-control m-3" placeholder="Votre commentaire..."  name="comment"></textarea>
         </div>';
 
     return $fields;
@@ -46,15 +45,11 @@ add_filter('comment_form_fields', 'customize_comment_fields');
 
 function add_cpt_recipe()
 {
-    // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
+
     $labels = [
-        // Le nom au pluriel
         'name' => _x('Recette', 'Post Type General Name'),
-        // Le nom au singulier
         'singular_name' => _x('Recette', 'Post Type Singular Name'),
-        // Le libellé affiché dans le menu
         'menu_name' => __('Recettes'),
-        // Les différents libellés de l'administration
         'all_items' => __('Toutes les recettes'),
         'view_item' => __('Voir les recettes'),
         'add_new_item' => __('Ajouter une nouvelle recette'),
@@ -66,16 +61,13 @@ function add_cpt_recipe()
         'not_found_in_trash' => __('Non trouvée dans la corbeille'),
     ];
 
-    // On peut définir ici d'autres options pour notre custom post type
     $args = [
         'label' => __('Recette'),
         'description' => __('Tous sur Recette'),
         'labels' => $labels,
-        // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
         'supports' => [
             'title',
             'editor',
-            'excerpt',
             'author',
             'thumbnail',
             'comments',
@@ -117,6 +109,8 @@ $custom_post_type = [
         'edit_posts' => "edit_recipe",
         'read_post' => "edit_recipe",
         "delete_post" => "edit_recipe",
+        "edit_comment" => "manage_recipe",
+        'moderate_comments' => "manage_recipe",
         "publish_posts" => "manage_recipe",
         "read_private_posts" => "manage_recipe",
     ],
@@ -151,7 +145,11 @@ add_action('after_switch_theme', function () {
     add_role('moderator', 'moderator', [
         'read' => true,
         'edit_recipe' => true,
+        'edits_posts' => true,
+        'edit_post' => true,
+        'edit_comment' => true,
         'manage_recipe' => true,
+        'moderate_comment' => true,
     ]);
 });
 
@@ -176,6 +174,9 @@ class Wphetic_AddEvent {
 /**
  * formulaire d'upload d'image
  */
+function mytheme_post_thumbnails() {
+    add_theme_support( 'post-thumbnails' );
+
 
 add_action('admin_post_upload_demo', function () {
     $recipe = wp_insert_post([
@@ -184,6 +185,7 @@ add_action('admin_post_upload_demo', function () {
         "post_type" => "recipe",
         "post_status" => "pending",
         "post_author" => get_current_user_id(),
+        "post_category" => [ $_POST["recipe_category"] ]
     ]);
 
     if (wp_verify_nonce($_POST['my_image_upload_nonce'], 'my_image_upload')) {
@@ -192,13 +194,17 @@ add_action('admin_post_upload_demo', function () {
         if (is_wp_error($attachment_id)) {
             wp_redirect($_POST['_wp_http_referer'] . '?status=error');
         } else {
-            set_post_thumbnail($attachment_id, $recipe);
-            wp_redirect($_POST['_wp_http_referer'] . '?status=no_nonce');
+            set_post_thumbnail($recipe, $attachment_id);
+            wp_redirect( $_POST["_wp_http_referer"] );
+
         }
     } else {
-        wp_redirect($_POST['_wp_http_referer'] . '?status=error');
+        wp_redirect( $_POST["_wp_http_referer"] );
     }
 });
+}
+add_action( 'after_setup_theme', 'mytheme_post_thumbnails' );
+
 
 function wphetic_add_metabox()
 {
@@ -234,7 +240,7 @@ function wphetic_metabox_render()
     $price = get_post_meta($_GET['post'], 'wphetic_price', true);
 
     ?>
-    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $checked; ?>" name="price" id="price">
+    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $price; ?>" name="price" id="price">
     <?php
 }
 function wphetic_metabox_renderer()
@@ -249,11 +255,14 @@ function wphetic_metabox_renderer()
 
 function wphetic_metabox_rendered()
 {
+
     $difficulty = get_post_meta($_GET['post'], 'wphetic_difficulty', true);
     ?>
     <label for="time">Entrer la durée de préparations de la recette</label><input type="number" value="<?= $difficulty; ?>" name="difficulty" id="difficulty">
     <?php
+
 }
+
 
 
 

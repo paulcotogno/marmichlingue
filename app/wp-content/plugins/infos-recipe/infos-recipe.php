@@ -1,11 +1,11 @@
-<?php 
+<?php
 /**
  * Plugin Name: Infos Shortcode
  * Description: Add a shortcode for displaying infos on recipe.
  * Version: 1.0
- * Author: marmichlingue 
+ * Author: marmichlingue
  * Text Domain: infos-shortcode
- * 
+ *
  * @package Infos Shortcode
  */
 
@@ -17,7 +17,7 @@ function init_shortcode(){
                 'time' => 10,
                 'difficulty' => 2,
                 'price' => 15
-        ), $atts);
+            ), $atts);
 
         switch ($a['difficulty']) {
             case 1:
@@ -33,7 +33,7 @@ function init_shortcode(){
                 $difficulty = 'Phillipe Etchebest';
                 break;
         }
-        
+
         if($a['price'] < 10){
             $price = 'Pas cher';
         } else if ($a['price'] < 30){
@@ -41,9 +41,9 @@ function init_shortcode(){
         } else {
             $price = 'Très cher';
         }
-        
-        
-        $par = '<div style="display: flex; width: 100%; justify-content: center;" class="container" >';
+
+
+        $par = '<div style="display: flex; width: 100%; justify-content: center; padding: 30px;" class="container" >';
         $par .= '<div class="block">'.$a['time'].' minutes</div>';
         $par .= '<div style="margin-left: 20px;" class="dot">.</div>';
         $par .= '<div style="margin-left: 20px;" class="block">'.$difficulty.'</div>';

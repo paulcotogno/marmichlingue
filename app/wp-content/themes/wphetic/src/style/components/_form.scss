@@ -24,3 +24,25 @@
         border: 1px solid black;
     }
 }
+
+.comment-respond {
+    margin-top: 1rem;
+
+}
+.comment-form{
+    margin-top: 1rem;
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        textarea {
+            height: 200px;
+        }
+    }
+}
+.form-control {
+    border: 1px solid rgba(33, 33, 33, 0.1);
+    background: none;
+    padding: .7rem;
+    border-radius: 15px;
+
+}
