@@ -18,6 +18,8 @@
                     <input type="text" placeholder="Tarte aux framboises...">
                     <button type="submit">Rechercher</button>
                 </form>
+                <button class="button" type="button"><a href="/login">Se connecter</a></button>
+                <button class="button" type="button"><a href="/register">S'inscrire</a></button>
             </div>
         </div>
         <nav class="menu-bot">
