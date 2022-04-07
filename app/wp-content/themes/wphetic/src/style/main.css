@@ -76,13 +76,27 @@ header .menu a, footer .menu a {
 }
 
 .post_container {
+  margin: 10px 0;
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  width: 60%;
+  max-width: 60%;
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
   padding: 3rem;
   border-radius: 20px;
+}
+.post_container .post_title {
+  text-align: center;
+}
+
+h2.post_headline,
+h2.comments__title {
+  color: #ff6f61;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
 }
 
 .post_info {
@@ -92,16 +106,9 @@ header .menu a, footer .menu a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.post_info > * {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.post_info > .post_date {
-  margin-left: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .post_content {
@@ -154,6 +161,53 @@ header .menu a, footer .menu a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.img-thumbnail {
+  display: inline-block;
+}
+
+.comment-block {
+  display: contents;
+}
+.comment-block p {
+  width: 100%;
+}
+
+.comment-by {
+  width: 90%;
+  margin-left: 15px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.comment {
+  list-style-type: none;
+}
+
+.comment > .comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 30px;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  margin: 30px 0 0 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 .cards {

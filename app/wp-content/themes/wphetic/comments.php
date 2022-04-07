@@ -3,10 +3,8 @@
     <?php if (have_comments()) : ?>
     <div class="comments__meta">
         <h2 class="comments__title">
-            Commentaires
+            <?= get_comments_number() == 1 ? 'Commentaire('. get_comments_number().')' : 'Commentaires('. get_comments_number().')' ?>
         </h2>
-        <span class="dashicons dashicons-admin-comments"><?= get_comments_number() == 1 ? get_comments_number() . ' commentaire' : get_comments_number() . ' commentaires'  ?> </span>
-        <span class="dashicons dashicons-admin-comments"></span>
     </div>
         <ul class="comment__list">
             <?php

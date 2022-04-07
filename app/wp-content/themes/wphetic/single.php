@@ -11,19 +11,20 @@
 ?>
 
 <div class="post_container">
-    <h2 class="post_title"><?= the_title() ?></h2>
     <div class="post_info">
-        <span class="post_grade"></span>
         <span class="post_date"><?php the_time('F jS, Y') ?></span>
+        <span class="post_price_category"><?php the_category() ?></span>
     </div>
+    <h2 class="post_title"><?= the_title() ?></h2>
     <img class="post_img" src="<?php the_post_thumbnail_url()?>" alt="">
     <div class="post_content">
-        <span class="post_price_category"><?php the_category() ?></span>
+        <h2 class="post_headline">Préparation</h2>
         <p class="post_description"><?php the_content(__('(more...)')); ?></p>
         <div class="post_comments">
-            <span class="post_count_comments"><?= get_comments_number() ?></span>
             <?php comments_template(); ?>
         </div>
     </div>
 </div>
 <?php endwhile; ?>
+
+<?php get_footer(); ?>
