@@ -155,15 +155,16 @@ add_action('switch_theme', function () {
     $admin->remove_cap('manage_recipe');
     remove_role('edit_recipe');
 });
+
 class Wphetic_AddEvent {
 
     private $styles;
 
     public function __construct(){
         $this->styles = get_terms([
-            'taxonomy' => 'category',
-            'hide_empty' => false
-        ]);
+                'taxonomy' => 'category',
+                'hide_empty' => false
+            ]);
     }
 }
 
@@ -221,8 +222,6 @@ function wphetic_add_metabox()
     );
 }
 
-
-
 add_action('add_meta_boxes', 'wphetic_add_metabox');
 
 function wphetic_metabox_render()
@@ -230,18 +229,8 @@ function wphetic_metabox_render()
     $price = get_post_meta($_GET['post'], 'wphetic_price', true);
 
     ?>
-    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $price; ?>" name="price" id="price">
+    <label for="price">Entrer le prix de votre recette</label><input type="number" value="<?= $checked; ?>" name="price" id="price">
     <?php
-
-}
-function wphetic_metabox_rendered()
-{
-
-    $difficulty = get_post_meta($_GET['post'], 'wphetic_difficulty', true);
-    ?>
-    <label for="difficulty">Entrer la difficultée de la recette</label><input type="number" value="<?= $difficulty; ?>" name="difficulty" id="difficulty">
-    <?php
-
 }
 function wphetic_metabox_renderer()
 {
