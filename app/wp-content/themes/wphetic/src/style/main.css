@@ -75,6 +75,12 @@ header .menu a, footer .menu a {
   text-decoration: none;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .post_container {
   position: relative;
   left: 50%;
