@@ -6,7 +6,7 @@ if (!function_exists('better_comments')):
     <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
         <div class="comment">
             <div class="img-thumbnail d-none d-sm-block">
-                <?= get_avatar($comment, $size = '50', $default = 'http://0.gravatar.com/avatar/36c2a25e62935705c5565ec465c59a70?s=32&d=mm&r=g'); ?>
+                <?= get_avatar($comment, $size = '50'); ?>
             </div>
             <div class="comment-block">
                 <div class="comment-arrow"></div>

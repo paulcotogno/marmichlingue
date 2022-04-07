@@ -20,10 +20,14 @@
     display: flex;
     flex-direction: column;
 }
-.post_content > .post_price_category {
-    margin-left: auto;
+.post_info {
+    margin-bottom: 1rem;
 }
-.post_content > .post_description {
+.post_price_category {
+    margin-left: auto;
+    text-align: right;
+}
+.post_description {
     text-align: justify;
     word-break: break-all;
 }

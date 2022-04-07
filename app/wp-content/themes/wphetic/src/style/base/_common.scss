@@ -2,7 +2,12 @@
 
 $font-base: 'Poppins', sans-serif;
 
-body {
+body, html {
     margin: 0;
     font-family: $font-base;
+}
+*:focus,
+*:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
 }

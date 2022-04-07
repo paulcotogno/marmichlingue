@@ -26,8 +26,13 @@ add_filter('comment_form_defaults', 'customize_comment_text');
 
 function customize_comment_fields($fields)
 {
+    $comment_field = $fields['comment'];
+
+    // The fields you want to unset (remove).
     unset($fields['comment']);
 
+    // Display the fields to your own taste.
+    // The order in which you place them will determine in what order they are displayed.
     $fields['comment'] = '
         <div class="form-group col-md-12 col-xs-12 d-flex flex-column">
             <label class="form-label m-3">Commentaire</label>
@@ -242,6 +247,13 @@ function wphetic_metabox_renderer()
 
 }
 
+function wphetic_metabox_rendered()
+{
+    $difficulty = get_post_meta($_GET['post'], 'wphetic_difficulty', true);
+    ?>
+    <label for="time">Entrer la durée de préparations de la recette</label><input type="number" value="<?= $difficulty; ?>" name="difficulty" id="difficulty">
+    <?php
+}
 
 
 
