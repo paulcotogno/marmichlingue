@@ -13,7 +13,6 @@
     <div class="form__item">
         <label for="InputEmail" class="form-label">Email adress</label>
         <input type="text" class="input" id="InputEmail" aria-describedby="emailHelp" name="log">
-        <div id="emailHelp" class="form-text">Yes siiir</div>
     </div>
     <div class="form__item">
         <label for="InputPassword" class="form-label">Password</label>
