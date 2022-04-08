@@ -37,7 +37,7 @@ jobs:
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
           key: ${{ secrets.SECRET }}
           script: |
-            ifconfig
+            ip addr
             ls -al
 
       # Runs a set of commands using the runners shell
