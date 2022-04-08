@@ -36,11 +36,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
           key: ${{ secrets.SECRET }}
-
-      # Runs a single command using the runners shell
-      - name: Git Pull
-        run:
-          ifconfig
+          script: |
+            ifconfig
+            ls -al
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
