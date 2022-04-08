@@ -43,5 +43,3 @@ jobs:
             sudo docker-compose exec -T php wp option update home 'http://20.199.107.35/' --allow-root
             sudo docker-compose exec -T php wp option update siteurl 'http://20.199.107.35/' --allow-root
             sudo docker-compose exec -T php wp search-replace 'http://localhost:2345/' 'http://20.199.107.35/' --allow-root
-            $filename="backup.$(date +"%m-%d-%y_%T").sql"
-            sudo docker-compose exec db mysqldump -uroot --password=password --databases data > home/groupe3/backup/$filename
