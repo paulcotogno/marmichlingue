@@ -39,8 +39,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Git Pull
-        run: |
-          echo essaie d'un git pull
+        run:
           ifconfig
 
       # Runs a set of commands using the runners shell
