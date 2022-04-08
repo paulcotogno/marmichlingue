@@ -4,9 +4,9 @@ name: GitHub Actions Demo
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ develop ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           script: |
             cd marmichlingue
             git fetch --all
-            git reset --hard origin/main
+            git reset --hard origin/develop
             docker-compose build
             sudo docker-compose exec -T php wp option update home 'http://185.189.159.104/' --allow-root
             sudo docker-compose exec -T php wp option update siteurl 'http://185.189.159.104/' --allow-root
