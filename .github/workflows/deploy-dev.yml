@@ -37,6 +37,7 @@ jobs:
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
           key: ${{ secrets.SECRET }}
           script: |
+            wp --info
             cd marmichlingue
             git fetch --all
             git reset --hard origin/main
