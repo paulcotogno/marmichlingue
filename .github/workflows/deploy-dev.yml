@@ -41,9 +41,9 @@ jobs:
             git fetch --all
             git reset --hard origin/main
             docker-compose build
-            sudo docker-compose exec php wp option update home 'http://185.189.159.104/' --allow-root
-            sudo docker-compose exec php wp option update siteurl 'http://185.189.159.104/' --allow-root
-            sudo docker-compose exec php wp search-replace 'http://localhost:2345/' 'http://185.189.159.104/' --allow-root
+            sudo docker-compose exec -T php wp option update home 'http://185.189.159.104/' --allow-root
+            sudo docker-compose exec -T php wp option update siteurl 'http://185.189.159.104/' --allow-root
+            sudo docker-compose exec -T php wp search-replace 'http://localhost:2345/' 'http://185.189.159.104/' --allow-root
             ls -al
 
       # Runs a set of commands using the runners shell
