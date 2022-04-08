@@ -13,6 +13,7 @@ RUN sudo mv wp-cli.phar /usr/local/bin/wp
 # Check whether the installation worked
 RUN wp --info
 
+
 RUN docker-php-ext-install mysqli pdo pdo_mysql \
     && a2enmod rewrite
 
