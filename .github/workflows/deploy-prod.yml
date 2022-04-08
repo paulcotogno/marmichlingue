@@ -29,19 +29,18 @@ jobs:
         uses: appleboy/ssh-action@v0.1.4
         with:
          # ssh host
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.HOSTPROD }}
           # ssh port
           port: 22
           # ssh username
-          username: ${{ secrets.USERNAME }}
-          # content of ssh private key. ex raw content of ~/.ssh/id_rsa
-          key: ${{ secrets.SECRET }}
+          username: ${{ secrets.USERNAMEPROD }}
+          password: ${{ secrets.PASSWORDPROD }}
           script: |
             cd marmichlingue
             git fetch --all
-            git reset --hard origin/develop
+            git reset --hard origin/main
             docker-compose build
-            sudo docker-compose exec -T php wp option update home 'http://185.189.159.104/' --allow-root
-            sudo docker-compose exec -T php wp option update siteurl 'http://185.189.159.104/' --allow-root
-            sudo docker-compose exec -T php wp search-replace 'http://localhost:2345/' 'http://185.189.159.104/' --allow-root
+            sudo docker-compose exec -T php wp option update home 'http://20.199.107.35/' --allow-root
+            sudo docker-compose exec -T php wp option update siteurl 'http://20.199.107.35/' --allow-root
+            sudo docker-compose exec -T php wp search-replace 'http://localhost:2345/' 'http://20.199.107.35/' --allow-root
             ls -al
